@@ -6,17 +6,17 @@ stockToPull = "AAPL"
 def pullData(stock):
 	try:
 		fileLine = stock+'.txt'
-		urlToVisit = 'http://ichart.finance.yahoo.com/table.csv?s='+stock+''
+		urlToVisit = 'http://ichart.finance.yahoo.com/table.csv?s='+stockToPull
 		sourceCode = urllib2.urlopen(urlToVisit).read()
 		splitSource = sourceCode.split('\n')
 		
-		for eachLine in SplitSource:
+		for eachLine in splitSource:
 			splitLine = eachLine.split(',')
-			if len(splitLine)==6:
+			if len(splitLine)==7:
 				if 'value' not in eachLine:
 					saveFile = open(fileLine,'a')
 					lineToWrite = eachLine+'\n'
-					saveFlie.write(lineToWrite)
+					saveFile.write(lineToWrite)
 				
 		print 'Pulled',stockToPull
 		print 'sleeping'
